@@ -107,7 +107,7 @@ let start = async () => {
 
 console.log("Start")
 
-cron.schedule("0 * * * *", () => {
+cron.schedule("*/5 * * * *", () => {
 	start()
 }, {
 	timezone: "Asia/Manila",
