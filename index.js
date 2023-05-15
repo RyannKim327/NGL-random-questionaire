@@ -1,3 +1,4 @@
+const axios = require("axios")
 const fs = require("fs")
 const cron = require("node-cron")
 const logs = require("./logs")
@@ -34,6 +35,7 @@ let execute = async (username, message) => {
 		"username": username,
 		"deviceId": ""
 	}
+	/*
 	const f = await fetch(`https://ngl.link/api/submit`, {
 		method: "POST",
 		headers: {
@@ -55,6 +57,26 @@ let execute = async (username, message) => {
 		r['user-agent'] = agent
 		return r
 	}).catch(e => {
+		return e
+	})
+	*/
+	let f = await axios.post("https://ngl.link/api/submit", {
+		headers: {
+			"Content-Type": "application/json",
+			"user-agent": agent
+		},
+		"question": message,
+		"username": username,
+		"deviceId": ""
+	}).then(res => {
+		let js = res.data
+		js['msg'] = message
+		js['username'] = username
+		js['user-agent'] = agent
+		console.log(js)
+		return js
+	}).catch(e => {
+		console.error(e)
 		return e
 	})
 	return f
@@ -98,17 +120,22 @@ let sent = async () => {
 }
 
 let start = async () => {
+	console.log("Test")
 	let getIt = await sent()
-	logs("Separator only")
+	logs("")
+	logs("------------------------------Separator only------------------------------")
+	logs("")
 	for(let i = 0; i < getIt.length; i++){
 		logs(JSON.stringify(getIt[i]))
 	}
 }
 
 console.log("Start")
-
-cron.schedule("*/5 * * * *", () => {
+start()
+cron.schedule("0 * * * *", () => {
+	console.log("API Executing...")
 	start()
+	console.log("API executed")
 }, {
 	timezone: "Asia/Manila",
 	scheduled: true
