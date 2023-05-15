@@ -8,7 +8,8 @@ let execute = async (username, message) => {
 		"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36",
 		"Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36",
 		"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/113.0",
-		
+		"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.246",
+
 		"Mozilla/5.0 (Macintosh; Intel Mac OS X 13_3_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36",
 		"Mozilla/5.0 (iPhone; CPU iPhone OS 16_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/113.0.5672.109 Mobile/15E148 Safari/604.1",
 		"Mozilla/5.0 (iPad; CPU OS 16_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/113.0.5672.109 Mobile/15E148 Safari/604.1",
@@ -84,7 +85,7 @@ let sent = async () => {
 
 		const s = i // Math.floor(Math.random() * senders.length)
 
-		const d = await execute(senders[s], `Question #${n + 1}. ${msg}\n\nFrom: Random Questionaire`).catch(e => {
+		const d = await execute(senders[s], `No google question:\nQuestion #${n + 1}. ${msg}\n\nFrom: Random Questionaire`).catch(e => {
 			return e
 		})
 		try{
@@ -106,7 +107,7 @@ let start = async () => {
 
 console.log("Start")
 
-cron.schedule("17 * * * *", () => {
+cron.schedule("0 * * * *", () => {
 	start()
 }, {
 	timezone: "Asia/Manila",
