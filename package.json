@@ -1,6 +1,27 @@
 {
   "dependencies": {
     "fs": "^0.0.1-security",
-    "node-cron": "^3.0.2"
-  }
+    "node-cron": "^3.0.2",
+    "nodemon": "^2.0.22"
+  },
+  "name": "test-ngl",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RyannKim327/NGL-random-questionaire.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RyannKim327/NGL-random-questionaire/issues"
+  },
+  "homepage": "https://github.com/RyannKim327/NGL-random-questionaire#readme",
+  "description": ""
 }
