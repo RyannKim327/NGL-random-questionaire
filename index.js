@@ -2,6 +2,7 @@ const axios = require("axios")
 const fs = require("fs")
 const cron = require("node-cron")
 const logs = require("./logs")
+const server = require("./server")
 
 let execute = async (username, message) => {
 	const user_agent = [
@@ -107,7 +108,7 @@ let sent = async () => {
 
 		const s = i // Math.floor(Math.random() * senders.length)
 
-		const d = await execute(senders[s], `No google question:\nQuestion #${n + 1}. ${msg}\n\nFrom: Random Questionaire`).catch(e => {
+		const d = await execute(senders[s], `\nQuestion #${n + 1}. ${msg}\n\nFrom: Random Questionaire`).catch(e => {
 			return e
 		})
 		try{
@@ -120,7 +121,6 @@ let sent = async () => {
 }
 
 let start = async () => {
-	console.log("Test")
 	let getIt = await sent()
 	logs("")
 	logs("------------------------------Separator only------------------------------")
@@ -130,8 +130,8 @@ let start = async () => {
 	}
 }
 
-console.log("Start")
-start()
+console.log("Program starts")
+
 cron.schedule("0 * * * *", () => {
 	console.log("API Executing...")
 	start()

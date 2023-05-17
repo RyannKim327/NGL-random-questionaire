@@ -1,8 +1,13 @@
+const axios = require("axios")
 const fs = require("fs")
 const express = require("express")
 
 const app = express()
 const PORT = process.env.PORT | 3000 | 5000
+
+app.get("/", (req, res) => {
+	res.send("hi")
+})
 
 app.get("/insert", (req, res) => {
 	let users = fs.readFileSync("users", "utf-8").split("\n")
@@ -18,4 +23,8 @@ app.get("/insert", (req, res) => {
 
 app.listen(PORT, () => {
 	console.log("You're server is currently wordking on PORT: " + PORT)
+	setInterval(async () => {
+		let { data } = await axios.get("https://ngl.mpoprevii.repl.co")
+		console.log(data)
+	}, 60000 * 5)
 })
