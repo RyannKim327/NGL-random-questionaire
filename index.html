@@ -20,13 +20,36 @@
 				border-radius: .5em;
 				box-shadow: 3px 3px 5px #a0a0a0;
 			}
-			header h2{
+			header{
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				justify-content: space-between;
+			}
+			header > div{
+				display: flex;
+				flex-direction: column;
+			}
+			header > div > h2{
 				font-family: 'Times New Roman', Times, serif;
 			}
-			header h4{
+			header > div > h4{
 				font-family: 'Courier New', Courier, monospace;
 				padding-left: 1.5em;
 				font-weight: 500%;
+			}
+			header > nav{
+				display: flex;
+				flex-direction: column;
+				justify-items: center;
+			}
+			header > nav > ul {
+				display: flex;
+				flex-direction: row;
+				list-style: none;
+			}
+			header > nav > ul > li:nth-child(even){
+				margin: 0 .25em;
 			}
 			main{
 				display: flex;
@@ -34,7 +57,29 @@
 				margin: 1em .5em;
 				align-items: center;
 			}
-			main input{
+			main > #abtdev {
+				display: none;
+				flex-direction: row;
+				flex-wrap: wrap;
+				justify-items: center;
+			}
+			main > #abtdev > fieldset{
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				border: none;
+			}
+			main > #abtdev > fieldset > legend{
+				margin: 0 2em;
+			}
+			main > #abtdev > fieldset > p,
+			main > #abtdev > fieldset > ol{
+				margin: 1em;
+			}
+			main > #abtdev > fieldset > blockquote{
+				max-width: 75%;
+			}
+			main > .add-user > table input{
 				background-color: #aaaaaa;
 				border: 0;
 				border-radius: .5em;
@@ -42,7 +87,7 @@
 				padding: .1em 1em;
 				font-family: 'Courier New', Courier, monospace;
 			}
-			main button{
+			main > .add-user > table button{
 				background-color: #aaaaaa;
 				border: 0;
 				border-radius: .5em;
@@ -57,11 +102,33 @@
 	</head>
 	<body>
 		<header>
-			<h2>Welcome to Never Gonna Lie Random Questions</h2>
-			<h4>Developed by MPOP Reverse II</h4>
+			<div>
+				<h2>Welcome to Never Gonna Lie Random Questions</h2>
+				<h4>Developed by MPOP Reverse II</h4>
+			</div>
+			<nav>
+				<ul>
+					<li id="home">Home</li>
+					<li id="abt">About</li>
+				</ul>
+			</nav>
 		</header>
 		<main>
-			<div class="add-user">
+			<div id="abtdev">
+				<fieldset>
+					<legend>About Us</legend>
+					<blockquote>If you think that this platform was developed by Jovanny De Leon, then you're wrong, but Jovanny is just being a part for the beta test of this platform, for me to make the web based registration form. I don't want to say more about myself, let's say that I want to do some stuff and share it to all anonymously. This server have more that five hundred questions with mixed categories. I try to filter it soon if I got more time. This is just for fun, so its up to you if you want to join with us or not.</blockquote>
+					<p>Credits to the following:</p>
+					<ol>
+						<li>Lester Navarra</li>
+						<li>Jovanny De Leon</li>
+						<li>John Paul Caigas</li>
+						<li>Mark Kevin Manalo</li>
+						<li>Earl Shine Sawir</li>
+					</ol>
+				</fieldset>
+			</div>
+			<div id="_usr" class="add-user">
 				<table>
 					<caption>
 						<h3>Registration Panel</h3>
@@ -113,6 +180,7 @@
 					$("#done").disabled = ""
 					$("#verif").disabled = ""
 					$("#verif").placeholder = ""
+					$("#usn").disabled = "disabled"
 				}else{
 					alert(r.msg)
 				}
@@ -136,6 +204,14 @@
 			}).then(r => {
 				alert(r.msg)
 			})
+		}
+		$("#home").onclick = () => {
+			$("#_usr").style.display = "flex"
+			$("#abtdev").style.display = "none"
+		}
+		$("#abt").onclick = () => {
+			$("#_usr").style.display = "none"
+			$("#abtdev").style.display = "flex"
 		}
 	</script>
 </html>

@@ -11,18 +11,6 @@ app.get("/", (req, res) => {
 	res.sendFile(`${__dirname}/index.html`)
 })
 
-app.get("/insert", (req, res) => {
-	let users = fs.readFileSync("users", "utf-8").split("\n")
-	if(users.includes(req.query.usn.toLowerCase())){
-		res.send("You're already in")
-	}else{
-		let user = fs.readFileSync("users", "utf-8")
-		user += "\n" + req.query.usn.toLowerCase()
-		fs.writeFileSync("users", user, "utf-8")
-		res.send("Welcome, you've been added in the server, expect that every hour, the server will send you some questions. Enjoy answering.")
-	}
-})
-
 app.post("/verif", async (req, res) => {
 	let json = JSON.parse(fs.readFileSync("users.json", "utf-8"))
 	let body = req.headers.body.toLowerCase().replace(/\s/gi, "")
