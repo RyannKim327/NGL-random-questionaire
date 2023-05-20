@@ -40,7 +40,7 @@ app.post("/verif", async (req, res) => {
 	}
 
 	const verification = () => {
-		const alphanumeric = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-"
+		const alphanumeric = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789_-"
 		let total = Math.floor(Math.random() * 5) + 5
 		let code = ""
 		for(let i = 0; i < total; i++){
@@ -74,7 +74,7 @@ app.post("/done", async (req, res) => {
 	if(json[body.usn.toLowerCase()] == body.code){
 		json[body.usn.toLowerCase()] = ""
 		fs.writeFileSync("users.json", JSON.stringify(json), "utf-8")
-		let data = await ngl.execute(body.usn, `Thank you for joining, I hope you'll enjoy this.`)
+		let data = await ngl.execute(body.usn, `Thank you for joining, I hope you'll enjoy this.\nFrom: Random Questionaire`)
 		console.log(data)
 		res.send(JSON.stringify({
 			ok: true,
