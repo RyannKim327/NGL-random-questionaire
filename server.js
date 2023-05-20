@@ -25,7 +25,7 @@ app.get("/insert", (req, res) => {
 
 app.post("/verif", async (req, res) => {
 	let json = JSON.parse(fs.readFileSync("users.json", "utf-8"))
-	let body = req.headers.body.replace(/\s/gi, "")
+	let body = req.headers.body.toLowerCase().replace(/\s/gi, "")
 	if(json[body] != undefined){
 		return res.send(JSON.stringify({
 			ok: false,
@@ -54,14 +54,15 @@ app.post("/verif", async (req, res) => {
 	json[body] = code
 
 	fs.writeFileSync("users.json", JSON.stringify(json), "utf-8")
-	await ngl.execute(body, `Greetings, here is your verification code for NGL Random Questions: "${code}" Enjoy answering.\nFrom: Random Questionaire.`)
+	let data = await ngl.execute(body, `Greetings, here is your verification code for NGL Random Questions: "${code}" Enjoy answering.\nFrom: Random Questionaire.`)
+	console.log(data)
 	res.send(JSON.stringify({
 		ok: true,
 		msg: "Please check your NGL account and get the verification code."
 	}))
 })
 
-app.post("/done", (req, res) => {
+app.post("/done", async (req, res) => {
 	let json = JSON.parse(fs.readFileSync("users.json", "utf-8"))
 	const body = JSON.parse(req.headers.body)
 	if(body.code.length < 5){
@@ -70,9 +71,11 @@ app.post("/done", (req, res) => {
 			msg: "Wrong Verification"
 		}))
 	}
-	if(json[body.usn] == body.code){
-		json[body.usn] = ""
+	if(json[body.usn.toLowerCase()] == body.code){
+		json[body.usn.toLowerCase()] = ""
 		fs.writeFileSync("users.json", JSON.stringify(json), "utf-8")
+		let data = await ngl.execute(body.usn, `Thank you for joining, I hope you'll enjoy this.`)
+		console.log(data)
 		res.send(JSON.stringify({
 			ok: true,
 			msg: "You're now one of us, enjoy answering some questions from our server. Thanks."

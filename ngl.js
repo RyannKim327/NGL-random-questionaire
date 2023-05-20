@@ -85,7 +85,7 @@ let sent = async () => {
 	let sents = []
 	const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
 	const sets = fs.readFileSync("data", "utf-8").split("\n")
-	const senders = fs.readFileSync("users", "utf-8").split("\n")
+	const senders = Object.keys(JSON.parse(fs.readFileSync("users.json", "utf-8")))
 	let lists = []
 
 	for(let i = 0; i < senders.length; i++){

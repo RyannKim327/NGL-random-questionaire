@@ -112,6 +112,7 @@
 					alert(r.msg)
 					$("#done").disabled = ""
 					$("#verif").disabled = ""
+					$("#verif").placeholder = ""
 				}else{
 					alert(r.msg)
 				}
@@ -119,6 +120,7 @@
 		}
 		$("#done").disabled = "disabled"
 		$("#verif").disabled = "disabled"
+		$("#verif").placeholder = "Please enter your username"
 		$("#done").onclick = () => {
 			fetch("/done", {
 				"method": "POST",
