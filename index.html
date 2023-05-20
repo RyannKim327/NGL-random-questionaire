@@ -98,6 +98,40 @@
 		const $ = (id) => {
 			return document.querySelector(id)
 		}
-		
+		$("#verify").onclick = () => {
+			fetch("/verif", {
+				"method": "POST",
+				"headers": {
+					"Content-Type": "application/json",
+					"body": $("#usn").value
+				}
+			}).then(r => {
+				return r.json()
+			}).then(r => {
+				if(r.ok){
+					alert(r.msg)
+					$("#done").disabled = ""
+				}else{
+					alert(r.msg)
+				}
+			})
+		}
+		$("#done").disabled = "disabled"
+		$("#done").onclick = () => {
+			fetch("/done", {
+				"method": "POST",
+				"headers": {
+					"Content-Type": "application/json",
+					"body": JSON.stringify({
+						"usn": $("#usn").value,
+						"code": $("#verif").value
+					})
+				}
+			}).then(r => {
+				return r.json()
+			}).then(r => {
+				alert(r.msg)
+			})
+		}
 	</script>
 </html>
