@@ -111,12 +111,14 @@
 				if(r.ok){
 					alert(r.msg)
 					$("#done").disabled = ""
+					$("#verif").disabled = ""
 				}else{
 					alert(r.msg)
 				}
 			})
 		}
 		$("#done").disabled = "disabled"
+		$("#verif").disabled = "disabled"
 		$("#done").onclick = () => {
 			fetch("/done", {
 				"method": "POST",
