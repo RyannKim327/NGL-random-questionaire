@@ -13,7 +13,7 @@
 				outline: none;
 				user-select: none;
 			}
-			header{
+			header, main{
 				background-color: #ededed;
 				padding: .5em;
 				margin: .5em;
@@ -28,6 +28,31 @@
 				padding-left: 1.5em;
 				font-weight: 500%;
 			}
+			main{
+				display: flex;
+				flex-direction: column;
+				margin: 1em .5em;
+				align-items: center;
+			}
+			main input{
+				background-color: #aaaaaa;
+				border: 0;
+				border-radius: .5em;
+				width: 100%;
+				padding: .1em 1em;
+				font-family: 'Courier New', Courier, monospace;
+			}
+			main button{
+				background-color: #aaaaaa;
+				border: 0;
+				border-radius: .5em;
+				width: 100%;
+				padding: .1em 1em;
+				box-sizing: border-box;
+				-webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				cursor: pointer;
+			}
 		</style>
 	</head>
 	<body>
@@ -37,8 +62,42 @@
 		</header>
 		<main>
 			<div class="add-user">
-				
+				<table>
+					<caption>
+						<h3>Registration Panel</h3>
+					</caption>
+					<tr>
+						<td>
+							<label for="usn">Username:</label>
+						</td>
+						<td>
+							<input type="text" id="usn">
+						</td>
+						<td>
+							<button id="verify">Verify</button>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="verif">Verification:</label>
+						</td>
+						<td colspan="2">
+							<input type="text" id="verif">
+						</td>
+					</tr>
+					<tr>
+						<td colspan="3">
+							<button id="done">Register</button>
+						</td>
+					</tr>
+				</table>
 			</div>
 		</main>
 	</body>
+	<script>
+		const $ = (id) => {
+			return document.querySelector(id)
+		}
+		
+	</script>
 </html>
