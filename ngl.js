@@ -34,31 +34,6 @@ let execute = async (username, message) => {
 		"username": username,
 		"deviceId": ""
 	}
-	/*
-	const f = await fetch(`https://ngl.link/api/submit`, {
-		method: "POST",
-		headers: {
-			"Content-Type": "application/json",
-			"user-agent": agent
-		},
-		body: JSON.stringify(data)
-	}).then(r => {
-		try{
-			return r.json()
-		}catch(e){
-			return {
-				"error": r.text()
-			}
-		}
-	}).then(r => {
-		r['msg'] = message
-		r['username'] = username
-		r['user-agent'] = agent
-		return r
-	}).catch(e => {
-		return e
-	})
-	*/
 	let f = await axios.post("https://ngl.link/api/submit", {
 		headers: {
 			"Content-Type": "application/json",
