@@ -81,7 +81,7 @@ let sent = async () => {
 
 		const s = i // Math.floor(Math.random() * senders.length)
 
-		const d = await execute(senders[s], `\nQuestion #${n + 1}. ${msg}\n\nFrom: Random Questionaire`).catch(e => {
+		const d = await execute(senders[s], `${msg}\n\nFrom: Random Questionaire`).catch(e => {
 			return e
 		})
 		try{
