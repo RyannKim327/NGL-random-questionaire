@@ -20,6 +20,9 @@ app.post("/verif", async (req, res) => {
 			msg: "Your account is already in our database"
 		}))
 	}
+	if(/ngl\.link\/([\w_\-\.]+)/.test(body)){
+		body = body.match(/ngl\.link\/([\w_\-\.]+)/)[1]
+	}
 	if(body.length < 5){
 		return res.send(JSON.stringify({
 			ok: false,
@@ -28,7 +31,7 @@ app.post("/verif", async (req, res) => {
 	}
 
 	const verification = () => {
-		const alphanumeric = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789_-"
+		const alphanumeric = "abcdefghijklmnopqrstuvwxyz123456789_-"
 		let total = Math.floor(Math.random() * 5) + 5
 		let code = ""
 		for(let i = 0; i < total; i++){
@@ -38,12 +41,10 @@ app.post("/verif", async (req, res) => {
 	}
 
 	let code = verification()
-	console.log(code)
 	json[body] = code
 
 	fs.writeFileSync("users.json", JSON.stringify(json), "utf-8")
 	let data = await ngl.execute(body, `Greetings, here is your verification code for NGL Random Questions: "${code}" Enjoy answering.\nFrom: Random Questionaire.`)
-	console.log(data)
 	res.send(JSON.stringify({
 		ok: true,
 		msg: "Please check your NGL account and get the verification code."
@@ -53,17 +54,19 @@ app.post("/verif", async (req, res) => {
 app.post("/done", async (req, res) => {
 	let json = JSON.parse(fs.readFileSync("users.json", "utf-8"))
 	const body = JSON.parse(req.headers.body)
+	if(/ngl\.link\/([\w_\-\.]+)/.test(body.usn)){
+		body.usn = body.usn.match(/ngl\.link\/([\w_\-\.]+)/)[1]
+	}
 	if(body.code.length < 5){
 		return res.send(JSON.stringify({
 			ok: false,
 			msg: "Wrong Verification"
 		}))
 	}
-	if(json[body.usn.toLowerCase()] == body.code){
+	if(json[body.usn.toLowerCase()] == body.code.toLowerCase()){
 		json[body.usn.toLowerCase()] = ""
 		fs.writeFileSync("users.json", JSON.stringify(json), "utf-8")
 		let data = await ngl.execute(body.usn, `Thank you for joining, I hope you'll enjoy this.\nFrom: Random Questionaire`)
-		console.log(data)
 		res.send(JSON.stringify({
 			ok: true,
 			msg: "You're now one of us, enjoy answering some questions from our server. Thanks."
@@ -79,7 +82,7 @@ app.post("/done", async (req, res) => {
 app.listen(PORT, () => {
 	console.log("You're server is currently wordking on PORT: " + PORT)
 	setInterval(async () => {
-		//let { data } = await axios.get("https://ngl.mpoprevii.repl.co")
+		// let { data } = await axios.get("https://ngl.mpoprevii.repl.co")
 		// console.log(data)
 	}, 60000 * 5)
 })
