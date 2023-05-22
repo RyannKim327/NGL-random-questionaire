@@ -16,7 +16,8 @@
 			header, main{
 				background-color: #ededed;
 				border-radius: .5em;
-				box-shadow: 3px 3px 5px #a0a0a0;
+				box-shadow: 3px 3px 5px #a0a0a0,
+				3px 3px 5px inset #a0a0a0;
 			}
 			header, .container{
 				padding: .5em;
@@ -64,35 +65,37 @@
 				-moz-box-sizing: border-box;
 				-webkit-box-sizing: border-box;
 			}
-			main{
+			.container > main{
 				display: flex;
-				flex-direction: column;
+				flex-direction: row;
 				margin: 1em .5em;
 				align-items: center;
+				justify-items: center;
+				flex-wrap: wrap;
 			}
-			main > #abtdev {
+			.container > main > #abtdev {
 				display: none;
 				flex-direction: row;
 				flex-wrap: wrap;
 				justify-items: center;
 			}
-			main > #abtdev > fieldset{
+			.container > main > #abtdev > fieldset{
 				display: flex;
 				flex-direction: column;
 				align-items: center;
 				border: none;
 			}
-			main > #abtdev > fieldset > legend{
+			.container > main > #abtdev > fieldset > legend{
 				margin: 0 2em;
 			}
-			main > #abtdev > fieldset > p,
-			main > #abtdev > fieldset > ol{
+			.container > main > #abtdev > fieldset > p,
+			.container > main > #abtdev > fieldset > ol{
 				margin: 1em;
 			}
-			main > #abtdev > fieldset > blockquote{
+			.container > main > #abtdev > fieldset > blockquote{
 				max-width: 75%;
 			}
-			main > .add-user > table input{
+			.container > main > .add-user > table input{
 				background-color: #aaaaaa;
 				border: 0;
 				border-radius: .5em;
@@ -100,7 +103,21 @@
 				padding: .1em 1em;
 				font-family: 'Courier New', Courier, monospace;
 			}
-			main > .add-user > table button{
+			.container > main > *{
+				display: flex;
+				flex-direction: column;
+				flex-wrap: wrap;
+				justify-items: center;
+				align-items: center;
+				width: 100%;
+				box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				-webkit-box-sizing: border-box;
+			}
+			.container > main > .add-user > table h3{
+				margin: 1em 0;
+			}
+			.container > main > .add-user > table button{
 				background-color: #aaaaaa;
 				border: 0;
 				border-radius: .5em;
@@ -115,7 +132,7 @@
 				.container > img{
 					display: none;
 				}
-				.container > main{
+				.container >	 main{
 					width: 100%;
 				}
 			}
@@ -124,7 +141,7 @@
 	<body>
 		<header>
 			<div>
-				<h2>Welcome to Never Gonna Lie Random Questions</h2>
+				<h2>Welcome to Not Gonna Lie Random Questions</h2>
 				<h4>Developed by MPOP Reverse II</h4>
 			</div>
 			<nav>
