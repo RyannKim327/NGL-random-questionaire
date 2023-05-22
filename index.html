@@ -13,23 +13,25 @@
 				outline: none;
 				user-select: none;
 			}
-			header, main{
+			header, main, footer{
 				background-color: #ededed;
 				border-radius: .5em;
 				box-shadow: 3px 3px 5px #a0a0a0,
-				3px 3px 5px inset #a0a0a0;
+				-1px -1px 3px #aaaaaa,
+				1px 1px 3px inset #aaaaaa,
+				-3px -3px 5px inset #a0a0a0;
 			}
-			header, .container{
-				padding: .5em;
+			header, .container, footer{
+				padding: .5em 1em;
 				margin: .5em;
 			}
-			header{
+			header, footer{
 				display: flex;
 				flex-direction: row;
 				align-items: center;
 				justify-content: space-between;
 			}
-			header > div{
+			header > div, footer{
 				display: flex;
 				flex-direction: column;
 			}
@@ -95,13 +97,26 @@
 			.container > main > #abtdev > fieldset > blockquote{
 				max-width: 75%;
 			}
+			.container > main > .add-user > table input,
+			.container > main > .add-user > table button{
+				margin: .25em;
+			}
 			.container > main > .add-user > table input{
-				background-color: #aaaaaa;
+				background-color: #aaaaaa13;
 				border: 0;
 				border-radius: .5em;
 				width: 100%;
 				padding: .1em 1em;
 				font-family: 'Courier New', Courier, monospace;
+				padding: .25em 1em;
+				color: #000000;
+				box-shadow: 2px 2px 5px #aaaaaa,
+				-3px -3px 5px inset #aaaaaa;
+			}
+			.container > main > .add-user > table input:focus{
+				box-shadow: none;
+				background-color: #aaaaaa;
+				color: #000000;
 			}
 			.container > main > *{
 				display: flex;
@@ -118,11 +133,14 @@
 				margin: 1em 0;
 			}
 			.container > main > .add-user > table button{
-				background-color: #aaaaaa;
+				background-color: #aaaaaa13;
 				border: 0;
 				border-radius: .5em;
 				width: 100%;
-				padding: .1em 1em;
+				padding: .25em 1em;
+				color: #000000;
+				box-shadow: 2px 2px 5px #aaaaaa,
+				-3px -3px 5px inset #aaaaaa;
 				box-sizing: border-box;
 				-webkit-box-sizing: border-box;
 				-moz-box-sizing: border-box;
@@ -132,7 +150,8 @@
 				.container > img{
 					display: none;
 				}
-				.container >	 main{
+				.container > main{
+					padding: 1em;
 					width: 100%;
 				}
 			}
@@ -202,11 +221,16 @@
 				</div>
 			</main>
 		</div>
+		<footer>
+			<h4>Developed under the name of MPOP Reverse II</h4>
+			<h5>All rights resserved &#0169; <span id="year"></span></h5>
+		</footer>
 	</body>
 	<script>
 		const $ = (id) => {
 			return document.querySelector(id)
 		}
+		$("#year").textContent = new Date().getFullYear()
 		$("#verify").onclick = () => {
 			fetch("/verif", {
 				"method": "POST",
