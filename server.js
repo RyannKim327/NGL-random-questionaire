@@ -14,14 +14,14 @@ app.get("/", (req, res) => {
 app.post("/verif", async (req, res) => {
 	let json = JSON.parse(fs.readFileSync("users.json", "utf-8"))
 	let body = req.headers.body.toLowerCase().replace(/\s/gi, "")
+	if(/ngl\.link\/([\w_\-\.]+)/.test(body)){
+		body = body.match(/ngl\.link\/([\w_\-\.]+)/)[1]
+	}
 	if(json[body] != undefined){
 		return res.send(JSON.stringify({
 			ok: false,
 			msg: "Your account is already in our database"
 		}))
-	}
-	if(/ngl\.link\/([\w_\-\.]+)/.test(body)){
-		body = body.match(/ngl\.link\/([\w_\-\.]+)/)[1]
 	}
 	if(body.length < 5){
 		return res.send(JSON.stringify({

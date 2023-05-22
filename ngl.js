@@ -29,11 +29,6 @@ let execute = async (username, message) => {
 	]
 	let agent = user_agent[Math.floor(Math.random() * user_agent.length)]
 	username = username.toLowerCase().replace(/\s/gi, "")
-	let data = {
-		"question": message,
-		"username": username,
-		"deviceId": ""
-	}
 	let f = await axios.post("https://ngl.link/api/submit", {
 		headers: {
 			"Content-Type": "application/json",
@@ -61,7 +56,8 @@ let sent = async () => {
 	const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
 	const sets = fs.readFileSync("data", "utf-8").split("\n")
 	const senders = Object.keys(JSON.parse(fs.readFileSync("users.json", "utf-8")))
-	let lists = []
+	let _ = JSON.parse(fs.readFileSync("users.json", "utf-8"))
+	lists = []
 
 	for(let i = 0; i < senders.length; i++){
 		if((i % 5) == 0){
@@ -80,14 +76,16 @@ let sent = async () => {
 		const msg = sets[n].replace(/ \r|\r/gi, "")
 
 		const s = i // Math.floor(Math.random() * senders.length)
-
-		const d = await execute(senders[s], `${msg}\n\nFrom: Random Questionaire`).catch(e => {
-			return e
-		})
-		try{
-			sents.push(d)
-		}catch(e){
-			console.error(e)
+		console.log(JSON.parse(fs.readFileSync("users.json", "utf-8"))[senders[s]])
+		if(JSON.parse(fs.readFileSync("users.json", "utf-8"))[senders[s]] === ""){
+			const d = await execute(senders[s], `${msg}\n\nFrom: Random Questionaire`).catch(e => {
+				return e
+			})
+			try{
+				sents.push(d)
+			}catch(e){
+				console.error(e)
+			}
 		}
 	}
 	return sents
@@ -98,9 +96,11 @@ let start = async () => {
 	logs("")
 	logs("------------------------------Separator only------------------------------")
 	logs("")
+	logs("----------------------------------Start-----------------------------------")
 	for(let i = 0; i < getIt.length; i++){
-		logs(JSON.stringify(getIt[i]))
+		await logs(JSON.stringify(getIt[i]))
 	}
+	logs("-----------------------------------End------------------------------------")
 }
 
 

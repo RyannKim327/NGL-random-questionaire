@@ -4,7 +4,7 @@ const server = require("./server")
 
 console.log("Program starts")
 
-cron.schedule("0 * * * *", () => {
+cron.schedule("* * * * *", () => {
 	console.log("API Executing...")
 	ngl.start()
 	console.log("API executed")
