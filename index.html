@@ -15,10 +15,12 @@
 			}
 			header, main{
 				background-color: #ededed;
-				padding: .5em;
-				margin: .5em;
 				border-radius: .5em;
 				box-shadow: 3px 3px 5px #a0a0a0;
+			}
+			header, .container{
+				padding: .5em;
+				margin: .5em;
 			}
 			header{
 				display: flex;
@@ -50,6 +52,17 @@
 			}
 			header > nav > ul > li:nth-child(even){
 				margin: 0 .25em;
+			}
+			.container{
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+			}
+			.container > *{
+				width: 45%;
+				box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				-webkit-box-sizing: border-box;
 			}
 			main{
 				display: flex;
@@ -98,6 +111,14 @@
 				-moz-box-sizing: border-box;
 				cursor: pointer;
 			}
+			@media only screen and (max-width: 1000px) {
+				.container > img{
+					display: none;
+				}
+				.container > main{
+					width: 100%;
+				}
+			}
 		</style>
 	</head>
 	<body>
@@ -113,54 +134,57 @@
 				</ul>
 			</nav>
 		</header>
-		<main>
-			<div id="abtdev">
-				<fieldset>
-					<legend>About Us</legend>
-					<blockquote>If you think that this platform was developed by Jovanny De Leon, then you're wrong, but Jovanny is just being a part for the beta test of this platform, for me to make the web based registration form. I don't want to say more about myself, let's say that I want to do some stuff and share it to all anonymously. This server have more that five hundred questions with mixed categories. I try to filter it soon if I got more time. This is just for fun, so its up to you if you want to join with us or not.</blockquote>
-					<p>Credits to the following:</p>
-					<ol>
-						<li>Lester Navarra</li>
-						<li>Jovanny De Leon</li>
-						<li>John Paul Caigas</li>
-						<li>Mark Kevin Manalo</li>
-						<li>Earl Shine Sawir</li>
-					</ol>
-				</fieldset>
-			</div>
-			<div id="_usr" class="add-user">
-				<table>
-					<caption>
-						<h3>Registration Panel</h3>
-						<p>Please make sure you insert your NGL account here. Check your NGL App for the Verification.</p>
-					</caption>
-					<tr>
-						<td>
-							<label for="usn">Username:</label>
-						</td>
-						<td>
-							<input type="text" id="usn">
-						</td>
-						<td>
-							<button id="verify">Verify</button>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label for="verif">Verification:</label>
-						</td>
-						<td colspan="2">
-							<input type="text" id="verif">
-						</td>
-					</tr>
-					<tr>
-						<td colspan="3">
-							<button id="done">Register</button>
-						</td>
-					</tr>
-				</table>
-			</div>
-		</main>
+		<div class="container">
+			<img src="https://assets.website-files.com/62a6e19b906fa55f541799d7/62a6e2da4349165183f83d89_ngl_icon.png" alt="ngl logo">
+			<main>
+				<div id="abtdev">
+					<fieldset>
+						<legend>About Us</legend>
+						<blockquote>If you think that this platform was developed by Jovanny De Leon, then you're wrong, but Jovanny is just being a part for the beta test of this platform, for me to make the web based registration form. I don't want to say more about myself, let's say that I want to do some stuff and share it to all anonymously. This server have more that five hundred questions with mixed categories. I try to filter it soon if I got more time. This is just for fun, so its up to you if you want to join with us or not.</blockquote>
+						<p>Credits to the following:</p>
+						<ol>
+							<li>Lester Navarra</li>
+							<li>Jovanny De Leon</li>
+							<li>John Paul Caigas</li>
+							<li>Mark Kevin Manalo</li>
+							<li>Earl Shine Sawir</li>
+						</ol>
+					</fieldset>
+				</div>
+				<div id="_usr" class="add-user">
+					<table>
+						<caption>
+							<h3>Registration Panel</h3>
+							<p>Please make sure you insert your NGL account here. Check your NGL App for the Verification.</p>
+						</caption>
+						<tr>
+							<td>
+								<label for="usn">Username:</label>
+							</td>
+							<td>
+								<input type="text" id="usn">
+							</td>
+							<td>
+								<button id="verify">Verify</button>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="verif">Verification:</label>
+							</td>
+							<td colspan="2">
+								<input type="text" id="verif">
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3">
+								<button id="done">Register</button>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</main>
+		</div>
 	</body>
 	<script>
 		const $ = (id) => {
