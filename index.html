@@ -4,6 +4,7 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="icon" href="https://assets.website-files.com/62a6e19b906fa55f541799d7/62a98d01b8629c02bae2af2e_Variant5_32.png">
 		<title>NGL Random Questions</title>
 		<style>
 			*{
@@ -13,6 +14,10 @@
 				outline: none;
 				user-select: none;
 			}
+			@font-face {
+				font-family: "PL Davidson";
+				src: url("font.ttf");
+			}
 			body{
 				background: #eaecef linear-gradient(to bottom right, #EC1187b0 0%, #FF8D10b0 100%);
 				background-repeat: no-repeat;
@@ -20,12 +25,11 @@
 				height: 100vh;
 			}
 			header, main, footer{
-				background-color: #ffffff20;
-				border-radius: 1em;
-				box-shadow: 3px 3px 5px #ffffff50,
-				-1px -1px 3px #ffffff50,
-				1px 1px 3px inset #ffffff50,
-				-1px -1px 3px inset #ffffff50;
+				background-color: #13132015;
+				border-radius: .5em;
+				box-shadow: 3px 3px 5px #00000030,
+				1px 1px 3px inset#00000050,
+				-3px -3px 5px inset #00000050;
 			}
 			header, .container, footer{
 				padding: .5em 1em;
@@ -72,6 +76,9 @@
 				box-sizing: border-box;
 				-moz-box-sizing: border-box;
 				-webkit-box-sizing: border-box;
+			}
+			.container > img{
+				opacity: 75%;
 			}
 			.container > main{
 				display: flex;
