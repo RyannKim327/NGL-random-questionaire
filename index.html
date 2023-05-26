@@ -11,9 +11,8 @@
 				--main-width: 100%;
 				--main-height: 100vh;
 
-				--main-background: #eaecef linear-gradient(to bottom right, #EC1187b0 0%, #FF8D10b0 100%);
-
-				--div-background: #ffffff15;
+				--main-background: #dbbafe;
+				--div-background: linear-gradient(to bottom right, #EC118730 0%, #FF8D1030 100%);
 				--div-radius: .5em;
 				--div-box-shadow: 3px 3px 5px #13132030,
 				1px 1px 3px inset#13132050,
@@ -23,6 +22,9 @@
 				--v-padd: 1em;
 
 				--h-mar: .5em;
+
+				--inputs: 2px 2px 5px #13132050,
+				-3px -3px 5px inset #13132050;
 			}
 			*{
 				margin: 0;
@@ -38,7 +40,7 @@
 				height: var(--main-height);
 			}
 			header, main, footer{
-				background-color: var(--div-background);
+				background: var(--div-background);
 				border-radius: var(--div-radius);
 				box-shadow: var(--div-box-shadow);
 			}
@@ -94,7 +96,6 @@
 			.container > main{
 				display: flex;
 				flex-direction: row;
-				margin: 1em .5em;
 				align-items: center;
 				justify-items: center;
 				flex-wrap: wrap;
@@ -135,8 +136,7 @@
 				padding: .25em 1em;
 				font-weight: bolder;
 				color: #000000;
-				box-shadow: 2px 2px 5px #13132050,
-				-3px -3px 5px inset #13132050;
+				box-shadow: var(--inputs);
 			}
 			.container > main > .add-user > table input:focus{
 				box-shadow: none;
@@ -164,8 +164,7 @@
 				width: 100%;
 				padding: .25em 1em;
 				color: #000000;
-				box-shadow: 2px 2px 5px #13132050,
-				-3px -3px 5px inset #13132050;
+				box-shadow: var(--inputs);
 				box-sizing: border-box;
 				-webkit-box-sizing: border-box;
 				-moz-box-sizing: border-box;
