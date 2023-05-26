@@ -7,6 +7,23 @@
 		<link rel="icon" href="https://assets.website-files.com/62a6e19b906fa55f541799d7/62a98d01b8629c02bae2af2e_Variant5_32.png">
 		<title>NGL Random Questions</title>
 		<style>
+			:root{
+				--main-width: 100%;
+				--main-height: 100vh;
+
+				--main-background: #eaecef linear-gradient(to bottom right, #EC1187b0 0%, #FF8D10b0 100%);
+
+				--div-background: #ffffff15;
+				--div-radius: .5em;
+				--div-box-shadow: 3px 3px 5px #13132030,
+				1px 1px 3px inset#13132050,
+				-3px -3px 5px inset #13132050;
+
+				--h-padd: .5em;
+				--v-padd: 1em;
+
+				--h-mar: .5em;
+			}
 			*{
 				margin: 0;
 				padding: 0;
@@ -14,26 +31,20 @@
 				outline: none;
 				user-select: none;
 			}
-			@font-face {
-				font-family: "PL Davidson";
-				src: url("font.ttf");
-			}
 			body{
-				background: #eaecef linear-gradient(to bottom right, #EC1187b0 0%, #FF8D10b0 100%);
+				background: var(--main-background);
 				background-repeat: no-repeat;
-				width: 100%;
-				height: 100vh;
+				width: var(--main-width);
+				height: var(--main-height);
 			}
 			header, main, footer{
-				background-color: #13132015;
-				border-radius: .5em;
-				box-shadow: 3px 3px 5px #00000030,
-				1px 1px 3px inset#00000050,
-				-3px -3px 5px inset #00000050;
+				background-color: var(--div-background);
+				border-radius: var(--div-radius);
+				box-shadow: var(--div-box-shadow);
 			}
 			header, .container, footer{
-				padding: .5em 1em;
-				margin: .5em;
+				padding: var(--h-padd) var(--v-padd);
+				margin: var(--h-mar);
 			}
 			header, footer{
 				display: flex;
